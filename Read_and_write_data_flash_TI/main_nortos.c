@@ -132,8 +132,6 @@ int main(void)  {
 
   for(int j=0;j<b_a;j++)
   {
-//      for(int k=0;k<=1;k++)
-//      {
           for(int i=0;i<64;i++)
           {
         //      d={0,0,i}
@@ -156,7 +154,6 @@ int main(void)  {
                       break;
                     }
           }
-//      }
   }
   for(int i=0;i<total_s;i++)
   {
@@ -174,18 +171,6 @@ int main(void)  {
       }
   }
 
-
-//    for(int i=0;i<(total_s);i++)
-//    {
-//        printf("\n-----------------------\n");
-//        printf("%s\n",r_var[i].eporch_time);
-//        printf("%s\n",r_var[i].eporch_id);
-//        printf("%X\n",r_var[i].crc_write);
-//        printf("%X\n",r_var[i].crc_read);
-//        printf("%d\n",r_var[i].T);
-//        printf("%d\n",r_var[i].F);
-//        printf("\n-----------------------\n");
-//    }
   printf("%lld\t",t_f_var.true_parts);
   printf("%lld\n",t_f_var.flas_parts);
   return 0;
