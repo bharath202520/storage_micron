@@ -1,0 +1,46 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --board "/ti/boards/CC26X2R1_LAUNCHXL" --rtos "nortos" --product "simplelink_cc13xx_cc26xx_sdk@6.41.00.17"
+ * @versions {"tool":"1.15.0+2826"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const ADC  = scripting.addModule("/ti/drivers/ADC", {}, false);
+const ADC1 = ADC.addInstance();
+const SPI  = scripting.addModule("/ti/drivers/SPI", {}, false);
+const SPI1 = SPI.addInstance();
+const LED  = scripting.addModule("/ti/drivers/apps/LED", {}, false);
+const LED1 = LED.addInstance();
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+ADC1.$name = "CONFIG_ADC_0";
+
+const CCFG              = scripting.addModule("/ti/devices/CCFG", {}, false);
+CCFG.ccfgTemplate.$name = "ti_devices_CCFG_CCFGCC26XXTemplate0";
+
+SPI1.$name     = "Board_SPI_MASTER";
+SPI1.$hardware = system.deviceData.board.components.LP_SPI;
+SPI1.mode      = "Four Pin SS Active Low";
+
+LED1.$name          = "BOARD_LED";
+LED1.ledPin.$assign = "boosterpack.19";
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+ADC1.adc.$suggestSolution              = "ADC0";
+ADC1.adc.adcPin.$suggestSolution       = "boosterpack.2";
+SPI1.spi.$suggestSolution              = "SSI0";
+SPI1.spi.sclkPin.$suggestSolution      = "boosterpack.7";
+SPI1.spi.misoPin.$suggestSolution      = "boosterpack.14";
+SPI1.spi.mosiPin.$suggestSolution      = "boosterpack.15";
+SPI1.spi.dmaRxChannel.$suggestSolution = "DMA_CH3";
+SPI1.spi.dmaTxChannel.$suggestSolution = "DMA_CH4";
+SPI1.spi.ssPin.$suggestSolution        = "boosterpack.18";
